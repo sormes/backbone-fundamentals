@@ -123,11 +123,11 @@ Martin Fowler hizo un trabajo excelente escribiendo a cerca de los [orígenes](h
 
 
 
-##MVC As We Know It
+##Mvc como lo conocemos
 
-We've reviewed the 70's, but let us now return to the here and now. The MVC pattern has been applied to a diverse range of programming languages. For example, the popular Ruby on Rails is an implementation of a web application framework based on MVC for the Ruby language. JavaScript now has a number of MVC frameworks, including Ember.js, JavaScriptMVC, and of course Backbone.js. Given the importance of avoiding "spaghetti" code, a term which describes code that is very difficult to read or maintain due to its lack of structure, let's look at what the MVC pattern enables the Javascript developer to do.
+Hemos repasado los años 70, pero vamos a volver aquí y ahora. El patrón MVC ha sido aplicado en diversos lenguajes de programación. Por ejemplo, el popular Ruby on Rails es una implementación de un framework de apliaciones wev basado en MVC para el lenguaje Ruby. Javascript tiene ahora una serie de Fameworks MVC, incluyendo Ember.js, JavascriptMVC y por supuesto Backbone.js. Dada la importancia de evitar el código "spaghetti", un término que describe el código que es difícil de leer o mantener debido a su falta de estructura, echemos un vistazo, a lo que el patrón MVC permite hacer al desarrollador.
 
-MVC is composed of three core components:
+MVC esta compuesto por tres componentes principales:
 
 ###Models 
 
