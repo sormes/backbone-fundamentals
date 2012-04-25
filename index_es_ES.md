@@ -11,10 +11,10 @@ I hope you find this book helpful!
 
 ##Table Of Contents
 
-* ####[Introduction](#introduction)
+* ####[Introducción](#introduction)
 
-* ####[Fundamentals](#fundamentals)
-    * [MVC, MVP & Backbone.js](#mvc-mvp)
+* ####[Fundamentos](#fundamentals)
+    * [Entendiendo MVC (Modelo vista controlador) y MVP(modelo vista presentación)(Para desarrolladores de javascript)](#mvc-mvp)
 
 * ####[The Basics](#thebasics)
     * [Models](#models)
@@ -129,11 +129,11 @@ Hemos repasado los años 70, pero vamos a volver aquí y ahora. El patrón MVC h
 
 MVC esta compuesto por tres componentes principales:
 
-###Models 
+###Modelos 
 
-Models manage the data for an application. They are concerned with neither the user-interface nor presentation layers, but instead represent structured data that an application may require. When a model changes (e.g when it is updated), it will typically notify its observers (e.g views, a concept we will cover shortly) that a change has occurred so that they may react accordingly.
+Los modelos gestionan los datos para una aplicación. No se preocupan ni por la interfaz de usuario ni las capas de presentación, sino de representar la estructura de los datos que una aplicación necesita. Cuando el modelo cambia (por ejemplo cuando es actualizado), notifican a los observadores (por ejemplo las vistas, un concepto que veremos en breves) de que un cambio ha ocurrido para que actúen en consecuencia.
   
-To understand models better, let us imagine we have a JavaScript photo gallery application. In a photo gallery, a photo would merit its own model, as it represents a unique kind of domain-specific data. The Photo model may represent attributes such as a caption, image source and additional meta-data. A specific photo would be stored in an instance of a model. Here's an example of a simple Photo model implemented with Backbone.js:
+Para entender los modelos mejor, imaginemos que tenemos una aplicación de una galería de fotos en Javascript. En una galería de fotos, una foto merecería tener su propio modelo, ya que representa un tipo único de dato del modelo. El modelo de la foto pude representar atributos como la leyenda (caption), la fuente de la imagen (image source) y meta-datos adicionales. Una foto específica se almacena como una instancia del modelo. Aquí tenemos un ejemplo de un modelo simple de una foto con backbone.js:
 
 
 
