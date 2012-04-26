@@ -140,9 +140,9 @@ Para entender los modelos mejor, imaginemos que tenemos una aplicación de una g
 ```javascript
 var Photo = Backbone.Model.extend({
 
-    // Default attributes for the photo
+    // atributos por defecto de la foto
     defaults: {
-      // Ensure that each photo created has an `src`.
+      // Nos aseguramos de que cada foto es creada con un 'src'
       src: "placeholder.jpg",
       caption: "A default image",
       viewed: false
@@ -154,27 +154,27 @@ var Photo = Backbone.Model.extend({
 });
 ```
 
-The built-in capabilities of models vary across frameworks, however it's common for them to support validation of attributes, where attributes represent the properties of the model, such as a model identifier. When using models in real-world applications we generally also need a way of persisting models. Persistence allows us to edit and update models with the knowledge that their most recent states will be saved somewhere, for example in a web browser's localStorage data-store or synchronized with a database.
+Las capacidades integradas de los modelos varian entre los frameworks,  sin embargo es común para ellos soportar la validación de los atributos, donde los atributos representan las propiedades del modelo, como un distintivo del modelo. Cuando usamos modelos en aplicaciones del mundo real, generalmente necesitamos también  una forma de persistir los modelos. La persistencia nos permite editar y actualizar los modelos con el conocimiento de que sus estados mas actuales serán guardados en algún sitio, por ejemplo en el almacenamiento local  de los navegadores web (localStorage) o sincronizando con una base de datos.
 
-A model may also have multiple views observing it. Imagine our Photo model contained meta-data such as the longitude and latitude where the photo was taken, a list of people present in the photo, and a list of tags. A developer could create a single view that displayed all these attributes, or might create three separate views to display each attribute. The important detail is that the Photo model doesn't care how these views are organized, it simply announces updates to its data as necessary. We'll come back to Views in more detail later.
+Un modelo puede tener múltiples vistas observándolo. Imagina nuestro modelo Photo contiene meta-información como la longitud o la latitud donde la foto fue tomada, una lista de las personas presentes en la foto y una lista de etiquetas. Un desarrollador podría crear una única vista que mostrase todos esos atributos, o podría crear tres vistas separadas que mostrase cada atributo. El detalle importante es que el modelo Photo no se preocupa de cómo se organizan esas vistas, simplemente anuncia que a actualizado sus datos si es necesario. Volveremos con las Vistas en mas detalle más tarde.
 
-It is not uncommon for modern MVC/MV* frameworks to provide a means to group models together. In Backbone, these groups are called "Collections". Managing models in groups allows us to write application logic based on notifications from the group, should any model it contains change. This avoids the need to manually observe individual model instances.
+No es poco común que los frameworks MVC/MV* modernos proporcionen una forma de agrupar los modelos. En Backbone esos grupos son llamados colecciones (Collections).  La gestión de los modelos en grupos nos permite escribir la lógica de la aplicación basadas en notificaciones desde el grupo, por si algún modelo contiene cambios. Esto evita tener que observar de forma manual instancias individuales de los modelos.
  
 
-Here's how we might group Photo models into a simplified Backbone Collection:
+Aquí está cómo pondríamos los modelos de Photo en una colección de backbone simple:
 
 ```javascript
 var PhotoGallery = Backbone.Collection.extend({
 
-    // Reference to this collection's model.
+    // Referencia del modelo de la colección
     model: Photo,
 
-    // Filter down the list of all photos that have been viewed
+    // Filtra la lista de todas las fotos que han sido vistas
     viewed: function() {
       return this.filter(function(photo){ return photo.get('viewed'); });
     },
 
-    // Filter down the list to only photos that have not yet been viewed
+    // Filtra la lista de todas las fotos que no han sido vistas todavia
     unviewed: function() {
       return this.without.apply(this, this.viewed());
     }
@@ -182,7 +182,7 @@ var PhotoGallery = Backbone.Collection.extend({
 });
 ```
 
-If you read older texts on MVC, you may come across a description of models as also managing application 'state'. In JavaScript applications "state" has a specific meaning, typically referring to the current "state" of a view or sub-view on a user's screen at a fixed time. State is a topic which is regularly discussed when looking at Single-page applications, where the concept of state needs to be simulated.
+Si lees texto viejos de MVC, habrá visto que hablan de que los modelos también gestionan el estado de la aplicación. El estado de las aplicaciones en Javascript tiene un significado específico, normalemnte se refiere al estado actual de una vista o una sub-vista en la pantalla del usuario en un momento fijo. El estado es un tema discutido de forma habitual cuando se trata de aplicaciones de una sola página, donde el concepto de estado necesita ser simulado.
 
 
 ###Views
