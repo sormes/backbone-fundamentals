@@ -1,15 +1,16 @@
-##Prelude
+##Preludio:
 
-Welcome to my (in-progress) book about the [Backbone.js](http://documentcloud.github.com/backbone/) framework for structuring JavaScript applications. It's released under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported [license](http://creativecommons.org/licenses/by-nc-sa/3.0/) meaning you can both grab a copy of the book for free or help to further [improve](https://github.com/addyosmani/backbone-fundamentals/) it.
+Bienvenido a mi libro (en progreso) sobre el framework [Backbone.js](http://documentcloud.github.com/backbone/) pàra estructurar aplicaciones en Javascript. Esta liberado bajo licencia  Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported [license](http://creativecommons.org/licenses/by-nc-sa/3.0/)  lo que significa que puedes utilizar una copia de este libro de forma gratuita o ayudar a continuar [mejorándolo](https://github.com/addyosmani/backbone-fundamentals/).
 
-I'm very pleased to announce that this book will be out in physical form in a few months time via [O'Reilly Media](http://oreilly.com). Readers will have the option of purchasing the latest version in either print or a number of digital formats then or can grab a recent version from this repository.
+Estoy muy contento de anunciar que este libro sera publicado en formato físico en unos meses via [O'Reilly Media](http://oreilly.com). Los lectores tendrán una opción de comprar la última versión ya sea la impresa una serie de formatos digitales o la versión de este repositorio.
 
-Corrections to existing material are always welcome and I hope that together we can provide the community with an up-to-date resource that is of help.
-My extended thanks go out to [Jeremy Ashkenas](https://github.com/jashkenas) for creating Backbone.js and [these](https://github.com/addyosmani/backbone-fundamentals/contributors) members of the community for their assistance tweaking this project.
+Las correcciones del material existente son siempre bienvenidas y deseo que todos juntos podamos ofrecer a la comunidad un recurso actualizado que sea de ayuda.
+Mis agradecimientos para Jeremy Ashkena por crear Backbone.js y a esos miembros de la comunidad por su ayuda a ajustar el proyecto.
 
-I hope you find this book helpful!
 
-##Table Of Contents
+¡Deseo que este libro te sea de ayuda!
+
+##Tabla de contenidos
 
 * ####[Introducción](#introduction)
 
