@@ -186,23 +186,23 @@ var PhotoGallery = Backbone.Collection.extend({
 Si lees texto viejos de MVC, habrá visto que hablan de que los modelos también gestionan el estado de la aplicación. El estado de las aplicaciones en Javascript tiene un significado específico, normalemnte se refiere al estado actual de una vista o una sub-vista en la pantalla del usuario en un momento fijo. El estado es un tema discutido de forma habitual cuando se trata de aplicaciones de una sola página, donde el concepto de estado necesita ser simulado.
 
 
-###Views
+###Vistas
 
-Views are a visual representation of models that present a filtered view of their current state. A view typically observes a model and is notified when the model changes, allowing the view to update itself accordingly. Design pattern literature commonly refers to views as 'dumb', given that their knowledge of models and controllers in an application is limited.
+Las vistas son una representación visual de los modelos que presentan una imagen filtrada de su estado actual. Un vista típica observa un modelo y es notificada cuando este cambia, permitiendo que la vista se actualice de forma acorde. El patrón de diseño se refiere a las vistas como "tontas" (dumb), dado que su conocimiento de los modelos y los controladores de la aplicación es limitado.
 
-Users interact with views, which usually means reading and editing model data. For example, in our photo gallery application example, model viewing might happen in a user interface with a big image, a caption, and a list of tags. Model editing could be done through an "edit" view where a user who has selected a specific photo could edit its caption, tags, or other metadata in a form. 
+Los usuarios interactúan con las vistas, que normalmente significa leer y editar los datos del modelo. Por ejemplo, en nuestra aplicación de galería de fotos, el visionado del modelo en la interfaz de usuario podría ser una imagen grande con su título, una lista de etiquetas. La edición del modelo podría hacerse a través de una vista de edición donde el usuario eligiera una foto específica y modificar si título, etiquetas o otros meta-datos en un formulario.
 
-In MVC, the actual task of updating the Model falls to Controllers, which we'll be covering shortly.
+En MVC, la tarea de actualizar el modelo, recae sobre los controladores, los cuales veremos dentro de poco.
 
-Let's explore Views a little further using a simple JavaScript example. Below we can see a function that creates a single Photo view, consuming both a model instance and a controller instance. 
- 
-We define a ```render()``` utility within our view which is responsible for rendering the contents of the ```photoModel``` using a JavaScript templating engine (Underscore templating) and updating the contents of our view, referenced by ```photoEl```.  
+Exploremos las vistas un poco más en profundidad usando un ejemplo sencillo en Javascript. A continuación podemos ver una función que crea una vista simple de una foto (Photo).,  alimentándose tanto de la instancia del modelo como la del controlador.
 
-The ```photoModel``` then adds our ```render()``` callback as one of its subscribers, so that through the Observer pattern it can trigger the view to update when the model changes. 
+Definimos la utilidad  ```render()``` en nuestra vista que es responsable de pintar (renderizar) los contenidos de ```photoModel```  (modelo de la foto), usando un motor de plantillas en Javascript (Underscore templating) y actualizando los contenidos de nuestra vista, referenciados por```photoEl```
 
-You may wonder where user interaction comes into play here. When users click on any elements within the view, it's not the view's responsibility to know what to do next. A Controller makes this decision. In our sample implementation, this is achieved by adding an event listener to ```photoEl``` which will delegate handling the click behavior back to the controller, passing the model information along with it in case it's needed.
+El ```photoModel``` añade entonces nuestro callback ```render()``` como uno de sus suscriptores , de modo que a través del patrón Observador se pude actualizar la vista cuando el modelo cambia.
 
-The benefit of this architecture is that each component plays its own separate role in making the application function as needed.
+Te podrías preguntar donde entra en juego la interacción con el usuario aquí, Cuando los usuarios hacen click con alguno de los elementos de la vista, no es responsabilidad de la vista saber que hacer después. El controlador toma esa decisión. En nuestro ejemplo , esto se logra añadiendo un evento escuchador al ```photoEl``` que delega el manejo del comportamiento del click al controlador, pasando la información del modelo en caso de ser necesaria.
+
+El beneficio de esta arquitectura es que cada componente desempeña su rol según lo necesite la aplicación.
   
 
 
