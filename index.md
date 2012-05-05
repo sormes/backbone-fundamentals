@@ -17,12 +17,12 @@ I hope you find this book helpful!
     * [MVC, MVP & Backbone.js](#mvc-mvp)
 
 * ####[The Basics](#thebasics)
-    * [Models](#models)
-    * [Views](#views)
-    * [Collections](#collections)
-    * [Routers](#routers)
-    * [Namespacing](#namespacing)
-    * [Additional tips](#additional-tips)
+    * [Models](#thebasics-models)
+    * [Views](#thebasics-views)
+    * [Collections](#thebasics-collections)
+    * [Routers](#thebasics-routers)
+    * [Namespacing](#thebasics-namespacing)
+    * [Additional tips](#thebasics-additional-tips)
 
 * ####[RESTful Applications](#restfulapps)
     * [Building RESTful applications with Backbone](#restful)
@@ -421,13 +421,13 @@ MVP is generally used most often in enterprise-level applications where it's nec
 
 As MVP views are defined through an interface and the interface is technically the only point of contact between the system and the view (other than a presenter), this pattern also allows developers to write presentation logic without needing to wait for designers to produce layouts and graphics for the application. 
 
-Depending on the implementation, MVP may be more easy to automatically unit test than MVC. The reason often cited for this is that the presenter can be used as a complete mock of the user-interface and so it can be unit tested independent of other components. In my experience this really depends on the languages you are implementing MVP in (there's quite a difference between opting for MVP for a JavaScript project over one for say, ASP.net).
+Depending on the implementation, MVP may be more easy to automatically unit test than MVC. The reason often cited for this is that the presenter can be used as a complete mock of the user-interface and so it can be unit tested independent of other components. In my experience this really depends on the languages you are implementing MVP in (there's quite a difference between opting for MVP for a JavaScript project over one for say, ASP.NET).
 
 At the end of the day, the underlying concerns you may have with MVC will likely hold true for MVP given that the differences between them are mainly semantic. As long as you are cleanly separating concerns into models, views and controllers (or presenters) you should be achieving most of the same benefits regardless of the pattern you opt for. 
 
 ##MVC, MVP and Backbone.js
 
-There are very few, if any architectural JavaScript frameworks that claim to implement the MVC or MVP patterns in their classical form as many JavaScript developers don't view MVC and MVP as being mutually exclusive (we are actually more likely to see MVP strictly implemented when looking at web frameworks such as ASP.net or GWT). This is because it's possible to have additional presenter/view logic in your application and yet still consider it a flavor of MVC. 
+There are very few, if any architectural JavaScript frameworks that claim to implement the MVC or MVP patterns in their classical form as many JavaScript developers don't view MVC and MVP as being mutually exclusive (we are actually more likely to see MVP strictly implemented when looking at web frameworks such as ASP.NET or GWT). This is because it's possible to have additional presenter/view logic in your application and yet still consider it a flavor of MVC. 
 
 Backbone contributor [Irene Ros](http://ireneros.com/) subscribes to this way of thinking as when she separates Backbone views out into their own distinct components, she needs something to actually assemble them for her. This could either be a controller route (such as a ```Backbone.Router```, covered later in the book) or a callback in response to data being fetched.   
 
@@ -542,7 +542,7 @@ In this section, you'll learn the essentials of Backbone's models, views, collec
 * Views
 * Namespacing
 
-###<a name="models">Models</a>
+###<a name="thebasics-models" id="thebasics-models">Models</a>
 
 Backbone models contain interactive data for an application as well as the logic around this data. For example, we can use a model to represent the concept of a photo object including its attributes like tags, titles and a location.
 
@@ -652,7 +652,7 @@ There are times when you want your model to have a set of default values (e.g. i
 
 ```javascript
 var Photo = Backbone.Model.extend({
-    defaults:{
+    defaults: {
         title: 'Another photo!',
         tags:  ['untagged'],
         location: 'home',
@@ -684,7 +684,7 @@ In the following example, we log a message whenever a specific attribute (the ti
 
 ```javascript
 var Photo = Backbone.Model.extend({
-    defaults:{
+    defaults: {
         title: 'Another photo!',
         tags:  ['untagged'],
         location: 'home',
@@ -739,7 +739,7 @@ myPhoto.set({ title: "On the beach" });
 
 
 
-###<a name="views">Views</a>
+###<a name="thebasics-views" id="thebasics-views">Views</a>
 
 Views in Backbone don't contain the markup for your application, but rather they are there to support models by defining the logic for how they should be represented to the user. This is usually achieved using JavaScript templating (e.g. Mustache, jQuery-tmpl, etc.). A view's `render()` function can be bound to a model's `change()` event, allowing the view to always be up to date without requiring a full page refresh.
    
@@ -817,7 +817,7 @@ The Backbone `events` attribute allows us to attach event listeners to either cu
 What isn't instantly obvious is that under the bonnet, Backbone uses jQuery's `.delegate()` to provide instant support for event delegation but goes a little further, extending it so that `this` always refers to the current view object. The only thing to really keep in mind is that any string callback supplied to the events attribute must have a corresponding function with the same name within the scope of your view.
  
 
-###<a name="collections">Collections</a>
+###<a name="thebasics-collections" id="thebasics-collections">Collections</a>
 
 Collections are sets of Models and are created by extending `Backbone.Collection`.
 
@@ -928,7 +928,7 @@ var sortedByAlphabet = PhotoCollection.sortBy(function (photo) {
 
 The complete list of what Underscore can do is beyond the scope of this guide, but can be found in its official [docs](http://documentcloud.github.com/underscore/).
  
-###<a name="routers">Routers</a>
+###<a name="thebasics-routers" id="thebasics-routers">Routers</a>
 
 In Backbone, routers are used to help manage application state and for connecting URLs to application events. This is achieved using hash-tags with URL fragments, or using the browser's pushState and History API. Some examples of routes may be seen below:
 
@@ -1049,7 +1049,7 @@ zoomPhoto: function(factor){
 }
 ```
 
-###<a name="namespacing">Namespacing</a>
+###<a name="thebasics-namespacing" id="thebasics-namespacing">Namespacing</a>
 
 When learning how to use Backbone, an important and commonly overlooked area by tutorials is namespacing. If you already have experience with namespacing in JavaScript, the following section will provide some advice on how to specifically apply concepts you know to Backbone, however I will also be covering explanations for beginners to ensure everyone is on the same page.
 
@@ -1209,7 +1209,7 @@ Reviewing the namespace patterns above, the option that I prefer when writing Ba
 Single global variables may work fine for applications that are relatively trivial. However, larger codebases requiring both namespaces and deep sub-namespaces require a succinct solution that's both readable and scalable. I feel this pattern achieves both of these objectives and is a good choice for most Backbone development.
 
 
-###<a name="additional-tips">Additional Tips</a>
+###<a name="thebasics-additional-tips" id="thebasics-additional-tips">Additional Tips</a>
 
 ####Automated Backbone Scaffolding
 
@@ -1229,7 +1229,7 @@ If you find yourself unsure of whether or not your application is too large to u
 
 Backbone can be used for building both trivial and complex applications as demonstrated by the many examples Ashkenas has been referencing in the Backbone documentation. As with any MVC framework however, it's important to dedicate time towards planning out what models and views your application really needs. Diving straight into development without doing this can result in either spaghetti code or a large refactor later on and it's best to avoid this where possible. 
 
-At the end of the day, the key to building large applications is not to build large applications in the first place. If you however find Backbone doesn't cut it for your requirements I strongly recommend checking out JavaScriptMVC or SproutCore as these both offer a little more than Backbone out of the box. Dojo and Dojo Mobile may also be of interest as these have also been used to build significantly complex apps by other developers.
+At the end of the day, the key to building large applications is not to build large applications in the first place. If you find that Backbone doesn't cut it for your requirements, I strongly recommend checking out JavaScriptMVC, SproutCore, or Ember.js as they offer a little more than Backbone out of the box. Dojo and Dojo Mobile may also be of interest as these have also been used to build significantly complex apps by other developers.
 
 
 ## <a name="restfulapps">RESTful Applications</a>
@@ -1273,7 +1273,7 @@ For this practical, we're going to once again look at extending the popular Back
 
 (See [here](https://github.com/addyosmani/backbone-boilerplates/blob/master/option2/app.js) for the source)
 
-We must first include the node dependencies required by our application. These are Express, Mongoose and Path (a module containing utilities for dealing with file paths.
+We must first include the node dependencies required by our application. These are Express, Mongoose and Path (a module containing utilities for dealing with file paths).
 
 ```javascript
 var application_root = __dirname,
@@ -1739,7 +1739,7 @@ ruby -rubygems example.rb
 
 If we now navigated to http://localhost:4567 in our browser we could now see the application running successfully.
 
-The HTTP verbs we commonly work with when writing RESTful web services are: `get`, `post`, `delete` and `put`. As we now know, all Sinatra routes are basically HTTP actions (```get`` etc.) that are paired with a URL-matching pattern. We associate a pair of an action and route with code we would like sent back to the browser (executed)if the route is reached. Sinatra doesn't enforce much in the way of architectural structure, instead relying on simplicity to supporting writing powerful APIs. 
+The HTTP verbs we commonly work with when writing RESTful web services are: `get`, `post`, `delete` and `put`. As we now know, all Sinatra routes are basically HTTP actions (```get``` etc.) that are paired with a URL-matching pattern. We associate a pair of an action and route with code we would like sent back to the browser (executed)if the route is reached. Sinatra doesn't enforce much in the way of architectural structure, instead relying on simplicity to supporting writing powerful APIs. 
 
 Here's an example of a skeleton service we could put together supporting four common HTTP actions:
 ruby
@@ -2154,7 +2154,7 @@ These can be viewed along with other note-worthy snippets of code from the appli
 
 ####Views
 
-In our main application view (AppView), we want to load any previously stored Todo items in our Mongo database when the view initializes. This is done below with the line ```Todos.fetch()``` in the ``initialize()`` method where we also bind to the relevant events on the `Todos` collection for when items are added or changed.
+In our main application view (AppView), we want to load any previously stored Todo items in our Mongo database when the view initializes. This is done below with the line ```Todos.fetch()``` in the ```initialize()``` method where we also bind to the relevant events on the `Todos` collection for when items are added or changed.
 
 ```javascript
 // Our overall **AppView** is the top-level piece of UI.
@@ -2302,7 +2302,7 @@ class TodoApp < Sinatra::Base
 	end
 ```
 
-`haml :index` instructs Sinatra to use the `views/index.haml` for the application index, whilst ```attr_wrapper`` is simply defining the values to be used for any local variables defined inside the template.
+`haml :index` instructs Sinatra to use the `views/index.haml` for the application index, whilst ```attr_wrapper``` is simply defining the values to be used for any local variables defined inside the template.
 This similarly applies Todo items with the template `views/todo.haml'.
 
 The rest of our routes make use of the `params` hash and a number of useful helper methods included with the MongoDB Ruby driver. For more details on these, please
@@ -3959,7 +3959,7 @@ window.mobileSearch = window.mobileSearch || {
         workspace:new Workspace()
     },
     utils: utils,
-    defaults:{
+    defaults: {
         resultsPerPage: 16,
         safeSearch: 2,
         maxDate:'',
@@ -4056,7 +4056,7 @@ In this chapter we're going to use both BDD (with TDD) to write unit tests for a
 
 When using Jasmine, you'll be writing suites and specifications (specs). Suites basically describe scenarios whilst specs describe what can be done in these scenarios.
 
-Each spec is a JavaScript function, described with a call to ```it()`` using a description string and a function. The description should describe the behaviour the particular unit of code should exhibit and keeping in mind BDD, it should ideally be meaningful. Here's an example of a basic spec:
+Each spec is a JavaScript function, described with a call to ```it()``` using a description string and a function. The description should describe the behaviour the particular unit of code should exhibit and keeping in mind BDD, it should ideally be meaningful. Here's an example of a basic spec:
 
 ```javascript
 it('should be incrementing in value', function(){
@@ -4065,7 +4065,7 @@ it('should be incrementing in value', function(){
 });
 ```
 
-On it's own, a spec isn't particularly useful until expectations are set about the behavior of the code. Expectations in specs are defined using the ```expect()``` function and an [expectation matcher](https://github.com/pivotal/jasmine/wiki/Matchers) (e.g toEqual(), toBeTruthy(), toContain()). A revised example using an expectation matcher would look like:
+On it's own, a spec isn't particularly useful until expectations are set about the behavior of the code. Expectations in specs are defined using the ```expect()``` function and an [expectation matcher](https://github.com/pivotal/jasmine/wiki/Matchers) (e.g ```toEqual()```, ```toBeTruthy()```, ```toContain()```). A revised example using an expectation matcher would look like:
 
 ```javascript
 it('should be incrementing in value', function(){
@@ -4075,7 +4075,7 @@ it('should be incrementing in value', function(){
 });
 ``` 
 
-The above code passes our behavioral expectation as ```counter`` equals 1. Notice how easy this was to read the expectation on the last line (you probably grokked it without any explanation).
+The above code passes our behavioral expectation as ```counter``` equals 1. Notice how easy this was to read the expectation on the last line (you probably grokked it without any explanation).
 
 Specs are grouped into suites which we describe using Jasmine's ```describe()``` function, again passing a string as a description and a function. The name/description for your suite is typically that of the component or module you're testing. 
 
@@ -4284,7 +4284,7 @@ describe('Tests for Todo', function() {
 
 Models should ideally have default values for attributes. This helps ensure that when creating instances without a value set for any specific attribute, a default one (e.g "") is used instead. The idea here is to allow your application to interact with models without any unexpected behavior. 
 
-In the following spec, we create a new Todo without any attributes passed then check to find out what the value of the ```text``` attribute is. As no value has been set, we expect a default value of ```""`` to be returned.
+In the following spec, we create a new Todo without any attributes passed then check to find out what the value of the ```text``` attribute is. As no value has been set, we expect a default value of ```""``` to be returned.
 
 ```javascript
 it('Can be created with default values for its attributes.', function() {
@@ -4299,12 +4299,10 @@ If testing this spec before your models have been written, you'll incur a failin
 
 window.Todo = Backbone.Model.extend({
 
-    defaults: function() {
-        return {
-            text: "",
-            done:  false,
-            order: 0
-        };
+    defaults: {
+      text: "",
+      done:  false,
+      order: 0
     }
 
 ```
@@ -4393,12 +4391,10 @@ function sanitize(str) {
 
 window.Todo = Backbone.Model.extend({
 
-    defaults: function() {
-        return {
-            text: '',
-            done:  false,
-            order: 0
-        };
+    defaults: {
+      text: '',
+      done:  false,
+      order: 0
     },
     
     initialize: function() {
@@ -5308,7 +5304,7 @@ As with Jasmine, the effort required to run synchronous tests with QUnit is fair
 
 Remember: running asynchronous code without any special considerations can cause incorrect assertions to appear in other tests, so we want to make sure we get it right.
 
-Writing QUnit tests for asynchronous code is made possible using the ```start()``` and ```stop()`` methods, which programmatically set the start and stop points during such tests. Here's a simple example:
+Writing QUnit tests for asynchronous code is made possible using the ```start()``` and ```stop()``` methods, which programmatically set the start and stop points during such tests. Here's a simple example:
 
 ```javascript
 test("An async test", function(){
