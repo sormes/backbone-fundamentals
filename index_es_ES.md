@@ -215,9 +215,7 @@ var buildPhotoView = function( photoModel, photoController ){
      base.appendChild(photoEl);
 
      var render= function(){
-        // We use a templating library such as Underscore
-        // templating which generates the HTML for our 
-        // photo entry
+        // Usamos una libreria de plantillas coomo Underscore que genera el HTML para la foto
         photoEl.innerHTML = _.template('photoTemplate', {src: photoModel.getSrc()});
      }
 
@@ -245,15 +243,15 @@ var buildPhotoView = function( photoModel, photoController ){
 ```
 
 
-**Templating**
+**Plantillas**
 
-In the context of JavaScript frameworks that support MVC/MV*, it is worth looking more closely at JavaScript templating and its relationship to Views.
+En el contexto de los frameworks de Javascript que soportan MVC/MV*, merece la pena echarle un vistazo a las plantillas con Javascript y su relacion con las vistas.
 
-It has long been considered bad practice (and computationally expensive) to manually create large blocks of HTML markup in-memory through string concatenation. Developers using this technique often find themselves iterating through their data, wrapping it in nested divs and using outdated techniques such as ```document.write``` to inject the 'template' into the DOM. This approach often means keeping scripted markup inline with standard markup, which can quickly become difficult to read and maintain, especially when building large applications.
+Desde hace tiempo , esta considerado como mala practica (y caro desde el punto de vista computacional) crear largos bloques de marcado HTML en memoria a través de la concatenación de cadenas. Los desarrolladores que usan esta técnica a menudo se encuentrar iterando  sus datos, envolviendolos en divs anidados y usando técnicas desfasadas como ```document.write``` para injectar la 'plantilla' en el DOM. Esta aproximación a menudo significa tener secuencias de comandos en linea que rapidamente se convierten en dificilis de leer y de mantener, especialmente cuando creamos apliaciones grandes.
     
-JavaScript templating libraries (such as Handlebars.js or Mustache) are often used to define templates for views as HTML markup containing template variables. These template blocks can be either stored externally or within script tags with a custom type (e.g 'text/template'). Variables are delimited using a variable syntax (e.g {{name}}). Javascript template libraries typically accept data in JSON, and the grunt work of populating templates with data is taken care of by the framework itself. This has a several benefits, particularly when opting to store templates externally as this can let applications load templates dynamically on an as-needed basis. 
+Las librerias de plantillas en Javascript (como lo son Handlebars o Mustache) son usadas normalmente para definir plantillas para las vistas como marcado  HTML conteniendo variables. Estas plantillas pueden ser almacenadas de forma externa o con la etiqueta script y un tipo personalizado (por ejemplo "text/template"). Las Variables se delimitan usando una sinaxis variable (por ejemplo {{name}}). las librerias de plantillas suelen aceptar datos en JSON, y el trabajo duro de rellenar las plantillas con los datos recae en el propio framework. Esto tiene varias ventajas, sobre todo cuando guardamos las plantillas de forma externa pudiendo dejar a la aplicacion que cargue las plantillas de forma dinamica según las necesite.
 
-Let's compare two examples of HTML templates. One is implemented using the popular Handlebars.js library, and the other uses Underscore's 'microtemplates'.  
+Vamos a comparar dos ejemplo de plantillas HTML, una implementada usando la popular libreria handlebars,js, y otra usando la micro-pantillas de Underscore.js
 
 **Handlebars.js:**
 
